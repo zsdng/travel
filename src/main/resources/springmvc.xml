@@ -22,6 +22,10 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+
+    <mvc:default-servlet-handler/>
+
+
     <mvc:resources mapping="/js/**" location="/js/" />
 
 
