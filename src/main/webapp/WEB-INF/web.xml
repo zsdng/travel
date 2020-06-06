@@ -3,7 +3,12 @@
         "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
+
     <display-name>Archetype Created Web Application</display-name>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext.xml</param-value>
+    </context-param>
     <!--字符集过滤器-->
     <filter>
         <filter-name>characterEncodingFilter</filter-name>
@@ -25,10 +30,7 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
     <!--设置配置文件的路径-->
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:applicationContext.xml</param-value>
-    </context-param>
+
 
     <servlet>
         <servlet-name>dispatcherServlet</servlet-name>
