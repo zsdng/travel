@@ -25,11 +25,14 @@ http://www.springframework.org/schema/tx/spring-tx.xsd">
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" 
           init-method="init" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/spring?characterEncoding=utf8"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/travel?characterEncoding=utf8"/>
         <property name="username" value="root"/>
         <property name="password" value="root"/>
     </bean>
 
+    <bean id="resultInfo" class="cn.fy.domain.ResultInfo">
+
+    </bean>
 
     <!--配置SqlSessionFactory工厂-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

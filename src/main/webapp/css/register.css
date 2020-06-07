@@ -6,30 +6,29 @@
 	overflow: hidden;
 }
 .rg_layout .rg_form{
-	width: 886px;
+	width: 630px;
 	height: 534px;
-	background-color: #fff;
+	background-color: rgba(101,211,255,0.5);
 	margin:24px auto;
-	border:8px solid #eeeeee;
 	box-sizing: border-box;
 }
 
 .rg_layout .rg_form > .rg_form_left{
-	width:256px;
+	width:70px;
 	float: left;
-	padding-top:20px;
+	padding-top:10px;
 	padding-left: 20px;
 	box-sizing: border-box;
 }
 .rg_layout .rg_form > .rg_form_center{
 	width:358px;
 	float: left;
-	padding-top:10px;
+	padding-top:1px;
 	box-sizing: border-box;
 	font-size: 14px;
 }
 .rg_layout .rg_form > .rg_form_right{
-	width:256px;
+	width:158px;
 	float: right;
 }
 
@@ -43,7 +42,7 @@
 	color: #a6a6a6;
 }
 .rg_form > .rg_form_center .td_left{
-	width: 65px;
+	width: 70px;
 	text-align: right;
 }
 .rg_form > .rg_form_center table{
@@ -53,7 +52,7 @@
 	height: 50px;
 }
 .rg_form > .rg_form_center .td_right{
-	width: 293px;
+	width: 320px;
 }
 .rg_form_center .td_right > input[type="text"],.rg_form_center .td_right > input[type="date"]{
 	width: 256px;
@@ -62,7 +61,6 @@
 	box-sizing: border-box;
 	padding: 6px 12px;
 	border-radius: 4px;
-	border:1px solid #a6a6a6;
 	float: right;
 }
 .rg_form > .rg_form_center .td_right.gender{
@@ -70,13 +68,14 @@
 	box-sizing: border-box;
 }
 .rg_form > .rg_form_center .td_right.check{
-	padding-left: 36px;
+	padding-left: 40px;
 	box-sizing: border-box;
 }
 .rg_form > .rg_form_center .td_right > .check{
 	width: 118px;
 	float: left;
-	margin-right:14px;
+	margin-left: 3px;
+	margin-right:15px;
 }
 .rg_form > .rg_form_center .td_right > .submit{
 	width: 120px;
@@ -92,5 +91,12 @@
 	box-sizing: border-box;
 }
 .rg_form > .rg_form_right >p >a{
-	color: #fc8989;
+	color: red;
+}
+
+#errorMsg {
+	color: white;
+	text-align: center;
+	font-size: 20px;
+	margin-left: 10px;
 }
