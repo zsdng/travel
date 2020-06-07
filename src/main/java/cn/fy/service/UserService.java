@@ -18,4 +18,6 @@ public interface UserService {
     public User findByUsername(String username);
 
 
+    //激活用户
+    boolean active(String code);
 }

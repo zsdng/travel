@@ -10,12 +10,18 @@
 
     <insert id="addUser" parameterType="cn.fy.domain.User">
 
-        insert into user(username,password,name,birthday,sex,telephone,email)
-        values (#{username}, #{password},#{name},#{birthday},#{sex},#{telephone},#{email})
+        insert into user(username,password,name,birthday,sex,telephone,email,status,code)
+        values (#{username}, #{password},#{name},#{birthday},#{sex},#{telephone},#{email},#{status},#{code})
 
     </insert>
 
+    <update id="updateStatus" parameterType="cn.fy.domain.User">
+        update user  set status  ='Y' where uid =#{uid}
+    </update>
 
+    <select id="findByCode" resultType="User">
+        select * from user where code=#{code}
+    </select>
 
 
 

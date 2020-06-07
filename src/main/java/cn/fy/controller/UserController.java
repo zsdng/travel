@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
 @Controller
 @RequestMapping("/user")
@@ -27,16 +29,35 @@ public class UserController {
 
     @RequestMapping("/findUserByName")
     @ResponseBody
-    public boolean findUserByName(String username){
+    public boolean findUserByName(String username) {
 
-        return userService.findByUsername(username)!=null;
+        return userService.findByUsername(username) != null;
+
+    }
+
+    @RequestMapping(value = "/activeUser",produces = "text/html;charset=utf-8")
+    @ResponseBody
+    public String activeUser(String code, HttpServletResponse response) throws IOException {
+
+        boolean flag = userService.active(code);
+
+        String msg = null;
+        if (flag) {
+            //激活成功
+            msg = "激活成功请<a href='login.html'>登录</a>";
+        } else {
+            //激活失败
+            msg = "激活失败请联系管理员！";
+        }
+
+        return msg;
 
     }
 
 
     @RequestMapping("/registerUser")
     @ResponseBody
-    public ResultInfo registerUser(HttpServletRequest request, User user, String check, HttpSession session){
+    public ResultInfo registerUser(HttpServletRequest request, User user, String check, HttpSession session) {
 
         //从session中获取验证码
 
@@ -45,12 +66,12 @@ public class UserController {
         session.removeAttribute("CHECKCODE_SERVER");
 
         try {
-            if (!checkcode_server.equalsIgnoreCase(check)){
+            if (!checkcode_server.equalsIgnoreCase(check)) {
                 resultInfo.setFlag(false);
                 resultInfo.setErrorMsg("验证码错误");
                 return resultInfo;
             }
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             e.printStackTrace();
             resultInfo.setFlag(false);
             resultInfo.setErrorMsg("请刷新验证码之后重新注册");
@@ -58,19 +79,17 @@ public class UserController {
         }
 
 
-
         boolean flag = userService.regist(user);
 
-        if (flag){
+        if (flag) {
             //注册成功
             resultInfo.setFlag(true);
-        }else {
+        } else {
             resultInfo.setFlag(false);
             resultInfo.setErrorMsg("注册失败,用户名已存在");
         }
         return resultInfo;
     }
-
 
 
 }

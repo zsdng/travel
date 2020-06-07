@@ -91,6 +91,9 @@ $(function () {
         if (checkUsername() && checkPassword()  && checkEmail()&& checkBirthday()){
             checkNameAndTelephone();
             checkBirthday();
+            $("#errorMsg").html("验证中！请不要退出或刷新页面，10s后将自动跳转.....");
+            $("input").attr("readonly","readonly");
+            $('#username').unbind("blur");
             $.post("user/registerUser",$(this).serialize(),function (data) {
                 console.log(data.flag);
                 console.log(data.errorMsg);
@@ -102,7 +105,24 @@ $(function () {
                     //注册失败，给errorMsg添加提示信息，并且重新刷新验证码
                     $("#errorMsg").html(data.errorMsg);
                     $("#check").val("");
+                    $("input").removeAttr("readonly");
                     document.getElementById("checkImg").src="checkCode?"+new Date().getTime();
+                    $("#username").blur(checkUsername);
+                    $("#username").blur(function () {
+                        var val =$(this).val();
+                        $.get(
+                            "user/findUserByName",
+                            {username:val},
+                            function (data) {
+                                if (data){
+                                    $("#errorMsg").html("已存在该用户！");
+                                }
+                            }
+                        )
+                    });
+
+
+
                 }
             })
         }
