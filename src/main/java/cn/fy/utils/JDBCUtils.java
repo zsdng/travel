@@ -16,7 +16,7 @@ import java.util.Properties;
 	2. 创建连接池对象
 	3. 定义公有的得到数据源的方法
 	4. 定义得到连接对象的方法
-	5. 定义关闭资源的方法
+	5. 定义关闭资源的方法qq
  */
 public class JDBCUtils {
 	// 1.	声明静态数据源成员变量
