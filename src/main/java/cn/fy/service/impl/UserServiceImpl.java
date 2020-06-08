@@ -56,4 +56,20 @@ public class UserServiceImpl  implements UserService {
         }
         return false;
     }
+
+    @Override
+    public Integer loginCheck(User user) {
+        User u1 = userDao.findByUsernameAndPassword(user);
+        if (u1==null){
+            return 5;//返回5说明用户名或密码错误
+        }else if ("N".equalsIgnoreCase(u1.getStatus())){
+            return 6;//返回6说明用户未激活
+        }else if ("Y".equalsIgnoreCase(u1.getStatus())){
+            return 666;//用户正常登录
+        }else {
+            return 1000;
+        }
+
+
+    }
 }

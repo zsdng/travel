@@ -8,7 +8,7 @@ import java.util.Objects;
  */
 public class ResultInfo implements Serializable {
     private boolean flag;//后端返回结果正常为true，发生异常返回false
-    private Object data;//后端返回结果数据对象
+    private Object objectReturned;//后端返回结果数据对象
     private String errorMsg;//发生异常的错误消息
 
     //无参构造方法
@@ -29,12 +29,11 @@ public class ResultInfo implements Serializable {
     /**
      * 有参构造方法
      * @param flag
-     * @param data
      * @param errorMsg
      */
-    public ResultInfo(boolean flag, Object data, String errorMsg) {
+    public ResultInfo(boolean flag, Object objectReturned, String errorMsg) {
         this.flag = flag;
-        this.data = data;
+        this.objectReturned = objectReturned;
         this.errorMsg = errorMsg;
     }
 
@@ -46,12 +45,12 @@ public class ResultInfo implements Serializable {
         this.flag = flag;
     }
 
-    public Object getData() {
-        return data;
+    public Object getObjectReturned() {
+        return objectReturned;
     }
 
-    public void setData(Object data) {
-        this.data = data;
+    public void setObjectReturned(Object objectReturned) {
+        this.objectReturned = objectReturned;
     }
 
     public String getErrorMsg() {

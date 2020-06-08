@@ -27,6 +27,13 @@ public class UserController {
         this.resultInfo = resultInfo;
     }
 
+
+    @RequestMapping("/findUser")
+    @ResponseBody
+    public User findUser(HttpSession session) {
+        return (User) session.getAttribute("user");
+    }
+
     @RequestMapping("/findUserByName")
     @ResponseBody
     public boolean findUserByName(String username) {
@@ -35,16 +42,17 @@ public class UserController {
 
     }
 
-    @RequestMapping(value = "/activeUser",produces = "text/html;charset=utf-8")
+    @RequestMapping(value = "/activeUser", produces = "text/html;charset=utf-8")
     @ResponseBody
     public String activeUser(String code, HttpServletResponse response) throws IOException {
+
 
         boolean flag = userService.active(code);
 
         String msg = null;
         if (flag) {
             //激活成功
-            msg = "激活成功请<a href='login.html'>登录</a>";
+            msg = "激活成功请<a href='../login.html'>登录</a>";
         } else {
             //激活失败
             msg = "激活失败请联系管理员！";

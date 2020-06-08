@@ -20,4 +20,6 @@ public interface UserService {
 
     //激活用户
     boolean active(String code);
+
+    Integer loginCheck(User user);
 }

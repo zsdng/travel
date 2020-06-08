@@ -32,6 +32,8 @@ public interface UserDao {
     /**
      * 登录的时候判断用户是否存在
      */
-    public void findByUsernameAndPassword(User user);
+    public User findByUsernameAndPassword(User user);
+
+
 
 }

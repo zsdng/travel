@@ -17,11 +17,11 @@
 
 <!--    <bean id="helloController" class="cn.fy.controller.HelloController"></bean>-->
     <!--视图解析器-->
-    <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
+ <!--   <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
         <property name="prefix" value="/WEB-INF/pages/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
-
+-->
 
     <mvc:default-servlet-handler/>
 
