@@ -28,4 +28,10 @@ public interface UserDao {
      * @param user
      */
     public void updateStatus(User user);
+
+    /**
+     * 登录的时候判断用户是否存在
+     */
+    public void findByUsernameAndPassword(User user);
+
 }
