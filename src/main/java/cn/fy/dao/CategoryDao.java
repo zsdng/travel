@@ -10,4 +10,6 @@ public interface CategoryDao {
 
 
     public List<Category> findAll();
+
+
 }

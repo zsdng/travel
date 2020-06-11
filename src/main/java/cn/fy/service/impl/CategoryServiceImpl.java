@@ -7,6 +7,7 @@ import cn.fy.utils.JedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.Tuple;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,10 @@ public class CategoryServiceImpl implements CategoryService {
         //1.从redis中查询
         Jedis jedis = JedisUtil.getJedis();
         //使用srotedset排序查询
-        Set<String> categorys = jedis.zrange("category", 0, -1);
+      //  Set<String> categorys = jedis.zrange("category", 0, -1);
+        //查询sortedset中的分数（cid）和值（cname）
+        Set<Tuple> categorys = jedis.zrangeWithScores("category", 0, -1);
+
         //2.判断查询的集合是否为空
         //3.如果为空，从数据库中查询，再将数据存入redis，如果不为空直接返回
         List<Category> cs=null;
@@ -38,9 +42,10 @@ public class CategoryServiceImpl implements CategoryService {
             System.out.println("从redis中查询");
             //这里是为了把set集合转成list集合
             cs=new ArrayList<Category>();
-            for (String c : categorys) {
+            for (Tuple tuple : categorys) {
                 Category category = new Category();
-                category.setCname(c);
+                category.setCname(tuple.getElement());
+                category.setCid((int)tuple.getScore());
                 cs.add(category);
             }
         }
