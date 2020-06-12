@@ -22,8 +22,8 @@
                     <a href="http://39.101.190.80:8080/getIp/"><img src="images/logo.jpg" alt=""></a>
                 </div>
                 <div class="search">
-                    <input name="" type="text" placeholder="请输入路线名称" class="search_input" autocomplete="off">
-                    <a href="javascript:;" class="search-button">搜索</a>
+                    <input name="" type="text" placeholder="请输入路线名称" class="search_input" id="search_input" autocomplete="off">
+                    <a href="javascript:;" class="search-button" id="search-button">搜索</a>
                 </div>
                 <div class="hottel">
                     <div class="hot_pic">
@@ -41,16 +41,6 @@
      <!-- 首页导航 -->
     <div class="navitem">
         <ul class="nav" id="category">
-          <!--  <li class="nav-active"><a href="index.html">首页</a></li>
-            <li><a href="route_list.html">门票</a></li>
-            <li><a href="route_list.html">酒店</a></li>
-            <li><a href="route_list.html">香港车票</a></li>
-            <li><a href="route_list.html">出境游</a></li>
-            <li><a href="route_list.html">国内游</a></li>
-            <li><a href="route_list.html">港澳游</a></li>
-            <li><a href="route_list.html">抱团定制</a></li>
-            <li><a href="route_list.html">全球自由行</a></li>
-            <li><a href="favoriterank.html">收藏排行榜</a></li>-->
         </ul>
     </div>
 
@@ -69,10 +59,6 @@
             //将lis的字符串设置到ul的html内容中
             $("#category").html(lis);
         });
-
-
-
-
         //查询登录状态和登录用户
         $.get("findLogin",{},function (data) {
             if (data.flag){
@@ -87,6 +73,38 @@
             }
         });
 
+        //当用户在搜索框按下回车键的时候也会触发下面的点击事件
+        $('#search_input').bind('keypress',function(event){
+            if(event.keyCode == "13")
+            {
+                var rname = $("#search_input").val();
+                // alert(rname);
+                var cid = getParameter("cid");
+                //跳转路径
+                location.href="http://localhost:8080/travel/route_list.html?cid="+cid+"&rname="+rname;
+            }
+        });
+
+
+        //现在需要给搜索按钮绑定单击事件，来获取搜索输入框的内容
+
+        $("#search-button").click(function () {
+            var rname = $("#search_input").val();
+            // alert(rname);
+            var cid = getParameter("cid");
+            //跳转路径
+            location.href="http://localhost:8080/travel/route_list.html?cid="+cid+"&rname="+rname;
+
+
+        });
+
+
+
+
+
+
+
     })
 
 </script>
+<script src="js/getParameter.js"></script>

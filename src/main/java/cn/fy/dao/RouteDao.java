@@ -8,5 +8,5 @@ import java.util.List;
 @Mapper
 public interface RouteDao {
 
-    public List<Route> findByCid(Integer cid);
+    public List<Route> findByCid(Route route);
 }

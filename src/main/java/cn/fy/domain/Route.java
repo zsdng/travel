@@ -62,6 +62,9 @@ public class Route implements Serializable {
         this.sourceId = sourceId;
     }
 
+    public Route(int cid, String rname) {
+    }
+
     public List<RouteImg> getRouteImgList() {
         return routeImgList;
     }

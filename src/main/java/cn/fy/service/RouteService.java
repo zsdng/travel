@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface RouteService  {
 
-    public List<Route> findByCid(Integer cid);
+    public List<Route> findByCid(Integer cid,String rname);
 }

@@ -20,12 +20,22 @@ public class RouteController {
     @Autowired
     private RouteService routeService;
 
-
+    /**
+     * 这是旅游线路中的数据的来源，包含模糊查询
+     * @param rname 模糊查询时所用到的线路名称
+     * @param pageNum
+     * @param pageSize
+     * @param cid
+     * @return
+     */
     @RequestMapping("/findByCid")
     @ResponseBody
-    public PageInfo<Route> findByCid(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum, @RequestParam(value = "pageSize", defaultValue = "8") Integer pageSize, Integer cid){
+    public PageInfo<Route> findByCid(String rname  ,@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum, @RequestParam(value = "pageSize", defaultValue = "8") Integer pageSize, Integer cid){
         PageHelper.startPage(pageNum,pageSize);
-        List<Route> list = routeService.findByCid(cid);
+        if ("null".equals(rname)){
+            rname=null;
+        }
+        List<Route> list = routeService.findByCid(cid,rname);
         return new PageInfo<Route>(list);
     }
 

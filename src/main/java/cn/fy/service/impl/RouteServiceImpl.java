@@ -3,9 +3,6 @@ package cn.fy.service.impl;
 import cn.fy.dao.RouteDao;
 import cn.fy.domain.Route;
 import cn.fy.service.RouteService;
-import cn.fy.utils.PageUtils;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,9 +15,16 @@ public class RouteServiceImpl implements RouteService {
     private RouteDao routeDao;
 
     @Override
-    public List<Route> findByCid(Integer cid) {
+    public List<Route> findByCid(Integer cid,String rname) {
 //        PageHelper.startPage(pageUtils.getPageIndex(),pageUtils.getPageSize());
-        return  routeDao.findByCid(cid);
+        Route route =new Route();
+        if (cid!=null){
+            route.setCid(cid);
+        }
+        if (rname!=null){
+            route.setRname(rname);
+        }
+        return  routeDao.findByCid(route);
 
 
     }

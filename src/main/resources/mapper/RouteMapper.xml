@@ -5,8 +5,19 @@
 <mapper namespace="cn.fy.dao.RouteDao">
 
 
+    <!--这个地方是因为其中的某个值可能为空值,其中模糊查询的拼接字符串也可以使用concat-->
     <select id="findByCid" resultType="Route">
-        select * from route where cid =#{cid}
+        select * from route
+         <where>
+             <if test="cid!=null and cid != ''">
+                and cid =#{cid}
+             </if>
+
+             <if test="rname!=null and rname != '' and rname!='null' ">
+                and  rname like "%"#{rname}"%"
+             </if>
+
+         </where>
     </select>
 
 

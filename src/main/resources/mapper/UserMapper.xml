@@ -24,7 +24,7 @@
     </select>
 
     <select id="findByUsernameAndPassword" resultType="User">
-        select * from user where username=#{username} and password = #{password}
+        select * from user where username=#{username} and  password = #{password}
     </select>
 
 
