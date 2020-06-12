@@ -21,4 +21,9 @@
     </select>
 
 
+    <select id="findOneByRid" resultType="Route">
+        select * from route where rid =#{rid}
+
+    </select>
+
 </mapper>

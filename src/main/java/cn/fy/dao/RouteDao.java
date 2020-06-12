@@ -9,4 +9,6 @@ import java.util.List;
 public interface RouteDao {
 
     public List<Route> findByCid(Route route);
+
+    public Route findOneByRid(Integer rid);
 }

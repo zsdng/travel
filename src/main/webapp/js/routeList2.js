@@ -123,7 +123,7 @@ function load(cid, pageNum,rname) {
                 '                                <span>'+route.price+'</span>\n' +
                 '                                <span>起</span>\n' +
                 '                            </p>\n' +
-                '                            <p><a href="route_detail.html">查看详情</a></p>\n' +
+                '                            <p><a href="route_detail.html?rid='+route.rid+'">查看详情</a></p>\n' +
                 '                        </div>\n' +
                 '                    </li>';
             route_lis += li;

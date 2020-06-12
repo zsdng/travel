@@ -27,6 +27,7 @@ public class RouteController {
      * @param pageSize
      * @param cid
      * @return
+     *
      */
     @RequestMapping("/findByCid")
     @ResponseBody
@@ -39,6 +40,11 @@ public class RouteController {
         return new PageInfo<Route>(list);
     }
 
+    @RequestMapping("/findOne")
+    @ResponseBody
+    public Route findOne(Integer rid){
+        return routeService.findOne(rid);
+    }
 
 
 }
